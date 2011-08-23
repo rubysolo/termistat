@@ -46,7 +46,7 @@ module Termistat
       @height, @width = FFI::NCurses.getmaxyx(@stdscr)
       @position = get_status_bar_position
 
-      @status = FFI::NCurses.newwin *@position
+      @status = FFI::NCurses.newwin(*@position)
       FFI::NCurses.scrollok @status, 0
 
       # redirect stdout
