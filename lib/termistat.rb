@@ -46,6 +46,7 @@ module Termistat
       m = formatted_message(message, config.align, status_bar_width)
 
       FFI::NCurses.wmove @status, 0, 0
+      FFI::NCurses.wattr_set @status, FFI::NCurses::A_NORMAL, 1, nil
       FFI::NCurses.waddstr @status, m
       FFI::NCurses.wrefresh @status
     end
@@ -69,6 +70,7 @@ module Termistat
       @config ||= Config.new
     end
 
+    #:enddoc:
     def config=(config)
       @config = config
     end
@@ -83,6 +85,15 @@ module Termistat
 
       @status = FFI::NCurses.newwin(*status_bar_params)
       FFI::NCurses.scrollok @status, 0
+
+      # set up colors
+      FFI::NCurses.start_color
+      background = FFI::NCurses::Color.const_get(config.background.to_s.upcase)
+      foreground = FFI::NCurses::Color.const_get(config.foreground.to_s.upcase)
+      FFI::NCurses.init_pair(1, foreground, background)
+
+      # hide cursor
+      FFI::NCurses.curs_set 0
 
       # redirect stdout
       $stdout = TeeIO.new do |msg|

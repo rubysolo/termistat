@@ -5,8 +5,10 @@ module Termistat
   class Config
     def initialize(options={}) #:notnew:
       @options = {
-        :position => :top_right,
-        :align    => :left,
+        :position   => :top_right,
+        :align      => :left,
+        :foreground => :white,
+        :background => :blue,
       }.merge(options)
     end
 
@@ -34,6 +36,42 @@ module Termistat
     def align(align=nil)
       @options[:align] = align unless align.nil?
       @options[:align]
+    end
+
+    #
+    # color of foreground (text)
+    #
+    # === Supported Options
+    # * +:black+
+    # * +:red+
+    # * +:green+
+    # * +:yellow+
+    # * +:blue+
+    # * +:magenta+
+    # * +:cyan+
+    # * +:white+
+    #
+    def foreground(color=nil)
+      @options[:foreground] = color unless color.nil?
+      @options[:foreground]
+    end
+
+    #
+    # color of background
+    #
+    # === Supported Options
+    # * +:black+
+    # * +:red+
+    # * +:green+
+    # * +:yellow+
+    # * +:blue+
+    # * +:magenta+
+    # * +:cyan+
+    # * +:white+
+    #
+    def background(color=nil)
+      @options[:background] = color unless color.nil?
+      @options[:background]
     end
   end
 end
