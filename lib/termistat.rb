@@ -53,7 +53,8 @@ module Termistat
 
     #
     # +config+ either returns the active configuration or (when a block is
-    # passed), sets up the configuration DSL.
+    # passed), sets up the configuration DSL.  See Termistat::Config for
+    # supported parameters and options.
     #
     # === Example
     #  Termistat.config do
