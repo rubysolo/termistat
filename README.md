@@ -17,6 +17,12 @@ Termistat gives you the best of both worlds.  You still have your
 detailed information, but you also have a status bar overlay with which
 you can display summary information.
 
+## Screenshot
+
+Here's what termistat looks like in action:
+[![screenshot](https://github.com/rubysolo/termistat/raw/master/examples/file_copy.png)]
+
+
 ## Installation:
 
     gem install termistat
