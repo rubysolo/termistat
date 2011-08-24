@@ -9,12 +9,38 @@ rescue LoadError
   require 'ffi-ncurses'
 end
 
+#
+# Termistat is a status bar for your terminal
+#
+# :title:Termistat
+
 module Termistat
+  #
+  # The +status_bar+ instance method initializes the status bar if necessary
+  # and displays your message.
+  #
+  # === Parameters
+  # * message = the messge you want to display
+  #
+  # === Example
+  #  include Termistat
+  #  status_bar "37% complete"
+  #
   def status_bar(message)
     Termistat.status_bar message
   end
 
   class << self
+    #
+    # the +status_bar+ class method initializes the status bar if necessary
+    # and displays your message.
+    #
+    # === Parameters
+    # * message = the messge you want to display
+    #
+    # === Example
+    #  Termistat.status_bar "37% complete"
+    #
     def status_bar(message)
       setup unless @stdscr
       m = formatted_message(message, config.align, status_bar_width)
@@ -24,6 +50,15 @@ module Termistat
       FFI::NCurses.wrefresh @status
     end
 
+    #
+    # +config+ either returns the active configuration or (when a block is
+    # passed), sets up the configuration DSL.
+    #
+    # === Example
+    #  Termistat.config do
+    #    align :left
+    #  end
+    #
     def config(&block)
       if block_given?
         c = Config.new
