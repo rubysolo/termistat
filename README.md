@@ -21,7 +21,7 @@ you can display summary information.
 
 Here's what termistat looks like in action:
 
-[![screenshot](https://github.com/rubysolo/termistat/raw/master/examples/file_copy.png)]
+![screenshot](https://github.com/rubysolo/termistat/raw/master/examples/file_copy.png)
 
 
 ## Installation:
