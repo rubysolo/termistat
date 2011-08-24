@@ -31,4 +31,11 @@ class TestTermistat < MiniTest::Unit::TestCase
 
     assert_equal :top_left, Termistat.config.position
   end
+
+  def test_text_alignment
+    assert_equal "foo       ", Termistat.formatted_message("foo", :left, 10)
+    assert_equal "       foo", Termistat.formatted_message("foo", :right, 10)
+    assert_equal "   foo    ", Termistat.formatted_message("foo", :center, 10)
+  end
+
 end

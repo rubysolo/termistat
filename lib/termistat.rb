@@ -17,9 +17,10 @@ module Termistat
   class << self
     def status_bar(message)
       setup unless @stdscr
+      m = formatted_message(message, config.align, status_bar_width)
 
       FFI::NCurses.wmove @status, 0, 0
-      FFI::NCurses.waddstr @status, message
+      FFI::NCurses.waddstr @status, m
       FFI::NCurses.wrefresh @status
     end
 
@@ -44,9 +45,8 @@ module Termistat
 
       # set up ncurses status bar
       @height, @width = FFI::NCurses.getmaxyx(@stdscr)
-      @position = get_status_bar_position
 
-      @status = FFI::NCurses.newwin(*@position)
+      @status = FFI::NCurses.newwin(*status_bar_params)
       FFI::NCurses.scrollok @status, 0
 
       # redirect stdout
@@ -67,7 +67,7 @@ module Termistat
       end
     end
 
-    def get_status_bar_position
+    def status_bar_params
       case config.position
       when Array
         config.position
@@ -85,6 +85,15 @@ module Termistat
         [1, w, 0, 0]
 
       end
+    end
+
+    def status_bar_width
+      status_bar_params[1]
+    end
+
+    def formatted_message(string, alignment, width)
+      return string.center(width) if :center === alignment
+      "%#{ :left === alignment ? '-' : '' }#{ width }s" % string
     end
   end
 end
