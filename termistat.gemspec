@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Termistat::VERSION
   s.authors     = ["Solomon White"]
   s.email       = ["rubysolo@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/rubysolo/termistat"
   s.summary     = %q{Terminal status bar}
   s.description = %q{Display status bar overlay for summary information}
 
