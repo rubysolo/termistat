@@ -7,14 +7,14 @@ module Termistat
       }.merge(options)
     end
 
-    def method_missing(meth_id, *args)
-      if @options.has_key?(meth_id)
-        return @options[meth_id] if args.empty?
-        @options[meth_id] = args.first
-        self
-      else
-        raise NoMethodError.new(meth_id)
-      end
+    def position(position=nil)
+      @options[:position] = position unless position.nil?
+      @options[:position]
+    end
+
+    def align(align=nil)
+      @options[:align] = align unless align.nil?
+      @options[:align]
     end
   end
 end
