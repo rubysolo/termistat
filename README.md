@@ -73,16 +73,14 @@ method.
 
 Termistat provides a default configuration that will display your status
 bar in the top right corner of your terminal.  Using the configuration
-DSL, you can position the status bar to your liking.
+DSL, you can customize the status bar to your liking.
 
     Termistat.config do
-      position :top
-      align    :center
+      position   :top
+      align      :center
+      background :black
+      foreground :magenta
     end
-
-*TODO*
-* actual implementation for alignment config option
-* color support
 
 ## Requirements
 
