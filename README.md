@@ -20,6 +20,7 @@ you can display summary information.
 ## Screenshot
 
 Here's what termistat looks like in action:
+
 [![screenshot](https://github.com/rubysolo/termistat/raw/master/examples/file_copy.png)]
 
 
