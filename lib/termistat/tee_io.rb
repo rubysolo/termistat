@@ -26,5 +26,9 @@ module Termistat
     def string
       @io.string
     end
+
+    def flush
+      @io.flush
+    end
   end
 end
